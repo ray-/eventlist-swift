@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import EventKit
 
 class MasterViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
     var objects = NSMutableArray()
+    var store : EKEventStore = EKEventStore()
 
 
     override func awakeFromNib() {
@@ -33,6 +35,8 @@ class MasterViewController: UITableViewController {
             let controllers = split.viewControllers
             self.detailViewController = controllers[controllers.endIndex-1].topViewController as? DetailViewController
         }
+        store.requestAccessToEntityType(EKEntityTypeEvent, completion: { (Bool granted, NSError error) in
+        })
     }
 
     override func didReceiveMemoryWarning() {
