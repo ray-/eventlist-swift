@@ -60,7 +60,7 @@ class MasterViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetail" {
             let indexPath = self.tableView.indexPathForSelectedRow()
-            let object = events[indexPath.row] as NSDate
+            let object = events[indexPath.row] as EKEvent
             ((segue.destinationViewController as UINavigationController).topViewController as DetailViewController).detailItem = object
         }
     }
@@ -117,7 +117,7 @@ class MasterViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
-            let object = events[indexPath.row] as NSDate
+            let object = events[indexPath.row] as EKEvent
             self.detailViewController!.detailItem = object
         }
     }

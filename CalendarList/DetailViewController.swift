@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import EventKit
 
 class DetailViewController: UIViewController, UISplitViewControllerDelegate {
 
@@ -14,7 +15,7 @@ class DetailViewController: UIViewController, UISplitViewControllerDelegate {
     var masterPopoverController: UIPopoverController? = nil
 
 
-    var detailItem: AnyObject? {
+    var detailItem: EKEvent? {
         didSet {
             // Update the view.
             self.configureView()
@@ -27,9 +28,9 @@ class DetailViewController: UIViewController, UISplitViewControllerDelegate {
 
     func configureView() {
         // Update the user interface for the detail item.
-        if let detail: AnyObject = self.detailItem {
+        if let event: EKEvent = self.detailItem {
             if let label = self.detailDescriptionLabel {
-                label.text = detail.description
+                label.text = event.title
             }
         }
     }
